@@ -1,4 +1,5 @@
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -12,6 +13,9 @@ import page_objects.NoFluffJobs;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class MainAPP {
 
@@ -41,13 +45,13 @@ public class MainAPP {
         noFluffJobs = new NoFluffJobs(driver);
         buldogJob = new BuldogJob(driver);
         writer.println(StringDecorator.DOCType());
-        writer.println(StringDecorator.openHeadAndTitle() + "TesterProgramuje.pl" + StringDecorator.closeHeadAndTitle());
+        writer.println(StringDecorator.openHeadAndTitle() + "TesterProgramuje.pl"
+                + StringDecorator.closeHeadAndTitle());
 
     }
 
     @AfterClass
     public void tearDown() {
-        //sleep(2000);
         writer.close();
         driver.quit();
     }
@@ -59,19 +63,27 @@ public class MainAPP {
         Actions builder = new Actions(driver);
         builder.moveToElement(justJoinIt.closeWindow()).click();
 
-        int numberOfElements1 = justJoinIt.getNumberOfElements();
+        justJoinIt.getAutomationIndex(justJoinIt.titles());
+        List<String> titles = justJoinIt.getTextByIndex(justJoinIt.titles(), justJoinIt.titlesId);
+        List<String> companies = justJoinIt.getTextByIndex(justJoinIt.companies(), justJoinIt.titlesId);
+        List<String> links = justJoinIt.getLinkByIndex(justJoinIt.links(), justJoinIt.titlesId);
+        List<String> data = justJoinIt.getTextByIndex(justJoinIt.data(), justJoinIt.titlesId);
+        int numberOfElements = justJoinIt.titlesId.size();
+
         writer.println("JUSTJOINIT");
         writer.println(StringDecorator.openTable());
         writer.println(StringDecorator.openTr()
-                + StringDecorator.th("Stanowisko") + StringDecorator.th("Oferta")
-                + StringDecorator.th("Dodano") + StringDecorator.th("Link")
+                + StringDecorator.th("Stanowisko")
+                + StringDecorator.th("Firma")
+                + StringDecorator.th("Data")
+                + StringDecorator.th("Link")
                 + StringDecorator.closeTr());
-        for (int i = 0; i < numberOfElements1; i++) {
+        for (int i = 0; i < numberOfElements; i++) {
             writer.println(StringDecorator.openTr()
-                    + StringDecorator.td(StringDecorator.isAutomation(justJoinIt.getTitle(i)))
-                    + StringDecorator.td(justJoinIt.getCompanyName(i).replace("\uE0AF", ""))
-                    + StringDecorator.td(justJoinIt.getData(i))
-                    + StringDecorator.td(StringDecorator.openLink() + justJoinIt.getLink(i)
+                    + StringDecorator.td(titles.get(i))
+                    + StringDecorator.td(companies.get(i).replace("\uE0AF", ""))
+                    + StringDecorator.td(data.get(i))
+                    + StringDecorator.td(StringDecorator.openLink() + links.get(i)
                     + StringDecorator.closeLink())
                     + StringDecorator.closeTr());
         }
@@ -82,23 +94,37 @@ public class MainAPP {
     public void getNoFluffJobsTest() {
         driver.get("https://nofluffjobs.com/jobs/testing");
         driver.manage().window().maximize();
-        sleep(1500);
-        int numberOfElements2 = noFluffJobs.getNumberOfElements();
+        sleep(2000);
+
+        noFluffJobs.getAutomationIndex(noFluffJobs.titles());
+        List<String> titles = noFluffJobs.getTextByIndex(noFluffJobs.titles(), noFluffJobs.titlesId);
+        List<String> companies = noFluffJobs.getTextByIndex(noFluffJobs.companies(), noFluffJobs.titlesId);
+        List<String> links = noFluffJobs.getLinkByIndex(noFluffJobs.links(), noFluffJobs.titlesId);
+
+        List<WebElement> listOfData = new ArrayList<WebElement>();
+        listOfData.addAll(noFluffJobs.dataNew());
+        listOfData.addAll(noFluffJobs.data());
+
+        List<String> dates = noFluffJobs.getTextByIndex(listOfData, noFluffJobs.titlesId);
+
+        int numberOfElements = noFluffJobs.titlesId.size();
 
         writer.println("NOFLUFFJOBS");
         writer.println(StringDecorator.openTable());
         writer.println(StringDecorator.openTr());
         writer.println(StringDecorator.th("Stanowisko")
-                + StringDecorator.th("Oferta")
+                + StringDecorator.th("Firma")
+                + StringDecorator.th("Data")
                 + StringDecorator.th("Link")
                 + StringDecorator.closeTr());
 
-        for (int i = 0; i < numberOfElements2; i++) {
+        for (int i = 0; i < numberOfElements; i++) {
 
             writer.println(StringDecorator.openTr()
-                    + StringDecorator.td(StringDecorator.isAutomation(noFluffJobs.getTitle(i)))
-                    + StringDecorator.td(noFluffJobs.getCompanyName(i).replace("@", ""))
-                    + StringDecorator.td(StringDecorator.openLink() + noFluffJobs.getLink(i)
+                    + StringDecorator.td(titles.get(i))
+                    + StringDecorator.td(companies.get(i).replace("@", ""))
+                    + StringDecorator.td(dates.get(i))
+                    + StringDecorator.td(StringDecorator.openLink() + links.get(i)
                     + StringDecorator.closeLink())
                     + StringDecorator.closeTr());
         }
@@ -110,21 +136,27 @@ public class MainAPP {
     public void getBuldogJobTest() {
         driver.get("https://bulldogjob.pl/companies/jobs/s/job_type,tester");
         driver.manage().window().maximize();
-        int numberOfElements3 = buldogJob.getNumberOfElements();
+        buldogJob.getAutomationIndex(buldogJob.titles());
+        List<String> titles = buldogJob.getTextByIndex(buldogJob.titles(), buldogJob.titlesId);
+        List<String> companies = buldogJob.getTextByIndex(buldogJob.companies(), buldogJob.titlesId);
+        List<String> links = buldogJob.getLinkByIndex(buldogJob.links(), buldogJob.titlesId);
+        List<String> data = buldogJob.getTextByIndex(buldogJob.data(), buldogJob.titlesId);
+        int numberOfElements = buldogJob.titlesId.size();
+
         writer.println("BULDOGJOB");
         sleep(1000);
         writer.println(StringDecorator.openTable());
         writer.println(StringDecorator.openTr() + StringDecorator.th("Stanowisko")
-                + StringDecorator.th("Oferta")
+                + StringDecorator.th("Firma")
                 + StringDecorator.th("Dodano")
                 + StringDecorator.th("Link")
                 + StringDecorator.closeTr());
-        for (int i = 0; i < numberOfElements3; i++) {
+        for (int i = 0; i < numberOfElements; i++) {
             writer.println(StringDecorator.openTr()
-                    + StringDecorator.td(StringDecorator.isAutomation(buldogJob.getTitle(i)))
-                    + StringDecorator.td(buldogJob.getCompanyName(i))
-                    + StringDecorator.td(buldogJob.getData(i))
-                    + StringDecorator.td(StringDecorator.openLink() + buldogJob.getLink(i)
+                    + StringDecorator.td(titles.get(i))
+                    + StringDecorator.td(companies.get(i))
+                    + StringDecorator.td(data.get(i))
+                    + StringDecorator.td(StringDecorator.openLink() + links.get(i)
                     + StringDecorator.closeLink())
                     + StringDecorator.closeTr());
         }

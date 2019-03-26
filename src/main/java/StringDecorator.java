@@ -20,7 +20,7 @@ public class StringDecorator {
     }
 
     public static String DOCType(){
-        return "<!DOCTYPE HTML> \n <html lang=\"pl\">";
+        return "<!DOCTYPE HTML> \n <html lang=\"pl\"> \n <meta charset=\"utf-8\">";
     }
 
     public static String openHeadAndTitle(){

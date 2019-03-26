@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JustJoinIt extends PageObject {
@@ -12,17 +13,19 @@ public class JustJoinIt extends PageObject {
         super(driver);
     }
 
+    public List<Integer> titlesId = new ArrayList<Integer>();
+
     @FindBy(className="offers-list")
     private List<WebElement> offerList;
 
     @FindBy(className="title")
-    private List<WebElement> title;
+    private List<WebElement> titles;
 
     @FindBy(className = "ngdialog-close")
     private WebElement close;
 
     @FindBy(className = "company-name")
-    private List<WebElement> companyName;
+    private List<WebElement> companyNames;
 
     @FindBy(className = "item")
     private List<WebElement> items;
@@ -30,17 +33,33 @@ public class JustJoinIt extends PageObject {
     @FindBy(className = "age")
     private List<WebElement> data;
 
+    public List<WebElement> titles(){
+        return titles;
+    }
+
+    public List<WebElement> companies(){
+        return companyNames;
+    }
+
+    public List<WebElement> links(){
+        return items;
+    }
+
+    public List<WebElement> data(){
+        return data;
+    }
+
     public void viewElement(){
         System.out.println(offerList);
     }
 
 
     public int getNumberOfElements(){
-        return title.size();
+        return titles.size();
     }
 
     public String getTitle(int index){
-        return title.get(index).getText();
+        return titles.get(index).getText();
     }
 
     public WebElement closeWindow(){
@@ -48,7 +67,7 @@ public class JustJoinIt extends PageObject {
     }
 
     public String getCompanyName(int index){
-        return companyName.get(index).getText();
+        return companyNames.get(index).getText();
     }
 
     public String getLink(int index){
@@ -58,5 +77,46 @@ public class JustJoinIt extends PageObject {
 
     public String getData(int index) {
         return data.get(index).getText();
+    }
+
+    public void getAutomationIndex(List<WebElement> titles ){
+        for (WebElement title : titles) {
+
+            String titlestr = title.getText();
+
+            if(titlestr.toLowerCase().contains("automatyczny") ||
+                    titlestr.toLowerCase().contains("automation") ||
+                    titlestr.toLowerCase().contains("automatyzujący")) {
+                titlesId.add(titles.indexOf(title));
+            }
+        }
+    }
+
+    public List<String> getTextByIndex(List<WebElement> elements, List<Integer> indexes){
+        List<String> text = new ArrayList<String>();
+
+        for (WebElement element: elements) {
+            for (Integer index: indexes) {
+                if (elements.indexOf(element) == index){
+                    text.add(element.getText());
+                }
+            }
+        }
+
+        return text;
+    }
+
+    public List<String> getLinkByIndex(List<WebElement> elements, List<Integer> indexes){
+        List<String> text = new ArrayList<String>();
+
+        for (WebElement element: elements) {
+            for (Integer index: indexes) {
+                if (elements.indexOf(element) == index){
+                    text.add(element.getAttribute("href"));
+                }
+            }
+        }
+
+        return text;
     }
 }
