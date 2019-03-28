@@ -5,7 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class JustJoinIt extends PageObject {
 
@@ -93,17 +96,13 @@ public class JustJoinIt extends PageObject {
     }
 
     public List<String> getTextByIndex(List<WebElement> elements, List<Integer> indexes){
-        List<String> text = new ArrayList<String>();
 
-        for (WebElement element: elements) {
-            for (Integer index: indexes) {
-                if (elements.indexOf(element) == index){
-                    text.add(element.getText());
-                }
-            }
-        }
+        return indexes.stream()
+                .filter(i -> i < elements.size())
+                .map(elements::get)
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
 
-        return text;
     }
 
     public List<String> getLinkByIndex(List<WebElement> elements, List<Integer> indexes){
