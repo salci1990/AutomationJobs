@@ -108,5 +108,3 @@ public class BuldogJob extends PageObject {
         return data.get(index).getText();
     }
 }
-
-//.filter(element->Pattern.compile("check_(\\d+)_box").matcher(element.getAttribute("id")).matches())
