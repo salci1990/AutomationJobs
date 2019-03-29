@@ -90,18 +90,12 @@ public class BuldogJob extends PageObject {
 
     }
 
-    public List<String> getLinkByIndex(List<WebElement> elements, List<Integer> indexes){
-        List<String> text = new ArrayList<String>();
-
-        for (WebElement element: elements) {
-            for (Integer index: indexes) {
-                if (elements.indexOf(element) == index){
-                    text.add(element.getAttribute("href"));
-                }
-            }
-        }
-
-        return text;
+    public List<String> getLinkByIndex(List<WebElement> elements, List<Integer> indexes) {
+        return indexes.stream()
+                .filter(i -> i < elements.size())
+                .map(elements::get)
+                .map(element -> element.getAttribute("href"))
+                .collect(Collectors.toList());
     }
 
     public String getData(int index) {
