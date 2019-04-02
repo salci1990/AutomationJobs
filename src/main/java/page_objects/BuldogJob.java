@@ -32,6 +32,9 @@ public class BuldogJob extends PageObject {
     @FindBy(className = "inline-block")
     private List<WebElement> data;
 
+    @FindBy(xpath = "//div[@class='row']/div/ul/li[1]")
+    private List<WebElement> cities;
+
 
     public int getNumberOfElements() {
         return titles.size();
@@ -55,6 +58,10 @@ public class BuldogJob extends PageObject {
 
     public List<WebElement> data(){
         return data;
+    }
+
+    public List<WebElement> getCityName() {
+        return cities;
     }
 
     public String getCompanyName(int index) {
