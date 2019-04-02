@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ccb51ed-cd0a-4d68-b01f-62c9f0ba514a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/TesterOffers.html" afterPath="$PROJECT_DIR$/TesterOffers.html" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainAPP.java" afterPath="$PROJECT_DIR$/src/main/java/MainAPP.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/StringDecorator.java" afterPath="$PROJECT_DIR$/src/main/java/StringDecorator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/page_objects/BuldogJob.java" afterPath="$PROJECT_DIR$/src/main/java/page_objects/BuldogJob.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MainAPP.class" afterPath="$PROJECT_DIR$/target/classes/MainAPP.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/StringDecorator.class" afterPath="$PROJECT_DIR$/target/classes/StringDecorator.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/page_objects/BuldogJob.class" afterPath="$PROJECT_DIR$/target/classes/page_objects/BuldogJob.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -25,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainAPP.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainAPP.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/MainAPP.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1784">
-              <caret line="242" column="36" lean-forward="false" selection-start-line="242" selection-start-column="36" selection-end-line="242" selection-end-column="36" />
+            <state relative-caret-position="4142">
+              <caret line="282" column="50" lean-forward="false" selection-start-line="282" selection-start-column="50" selection-end-line="282" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -47,7 +41,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TesterOffers.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TesterOffers.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TesterOffers.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
@@ -515,9 +509,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainAPP - 2019.04.02 at 11h 40m 31s.xml">
-      <configuration name="MainAPP" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="MainAPP - 2019.04.02 at 11h 44m 11s.xml">
       <configuration name="MainAPP" configurationId="TestNG" />
     </history-entry>
@@ -543,6 +534,9 @@
       <configuration name="MainAPP" configurationId="TestNG" />
     </history-entry>
     <history-entry file="MainAPP - 2019.04.02 at 13h 55m 18s.xml">
+      <configuration name="MainAPP" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="MainAPP - 2019.04.02 at 14h 05m 48s.xml">
       <configuration name="MainAPP" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -1529,21 +1523,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MainAPP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4142">
+          <caret line="282" column="50" lean-forward="false" selection-start-line="282" selection-start-column="50" selection-end-line="282" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TesterOffers.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="32" column="163" lean-forward="false" selection-start-line="32" selection-start-column="163" selection-end-line="32" selection-end-column="163" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MainAPP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1784">
-          <caret line="242" column="36" lean-forward="false" selection-start-line="242" selection-start-column="36" selection-end-line="242" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
