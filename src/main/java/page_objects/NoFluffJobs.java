@@ -134,5 +134,3 @@ public class NoFluffJobs extends PageObject {
         return  dataText;
     }
 }
-
-
